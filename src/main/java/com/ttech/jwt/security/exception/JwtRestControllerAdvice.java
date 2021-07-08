@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice(basePackages = {"com.tech", "com.ttech"})
-public class TechRestControllerAdvice {
+public class JwtRestControllerAdvice {
 
-	private static Logger log = LoggerFactory.getLogger(TechRestControllerAdvice.class.getName());
+	private static Logger log = LoggerFactory.getLogger(JwtRestControllerAdvice.class.getName());
 	
 	@Autowired
 	private HttpServletRequest httpServletRequest;

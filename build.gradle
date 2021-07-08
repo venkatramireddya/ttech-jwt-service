@@ -1,34 +1,25 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.2'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
 group = 'com.ttech'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
-	mavenCentral()
+	jcenter()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-}
+	implementation 'org.springframework.boot:spring-boot-starter:2.5.2'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.5.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.5.2'
+	implementation 'com.auth0:java-jwt:3.9.0'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.servlet:servlet-api:2.5'
+	implementation 'javax.validation:validation-api:2.0.0.Final'
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-test {
-	useJUnitPlatform()
 }
