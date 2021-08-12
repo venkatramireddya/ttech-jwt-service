@@ -50,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui/**",
                 "/swagger-ui.html")
 		.permitAll()
+		.antMatchers("/actuator/**").hasRole("APPL_ACCESS")
 		.antMatchers(HttpMethod.GET, "/course", "/authentication/course").permitAll()
 		.anyRequest().authenticated()
 		.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
