@@ -3,6 +3,7 @@ package com.ttech.jwt.security;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -49,6 +51,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 	        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
 	        SecurityContextHolder.getContext().setAuthentication(authentication);
+	        //adding to log information
+	        String mdcData = String.format("[%s | %s | %s ]", "USER_ID:"+username, "TRANSACTION_ID:"+UUID.randomUUID().toString(), "URI:"+request.getRequestURI());
+	        MDC.put("common-log-data", mdcData);
 	      }
 	    } catch (Exception e) {
 	      logger.error("Cannot set user authentication: {}", e);
